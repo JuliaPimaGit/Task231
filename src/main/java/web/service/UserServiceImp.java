@@ -11,6 +11,7 @@ import web.model.User;
 import java.util.List;
 
 @Service
+@Transactional
 public class UserServiceImp implements UserService {
 
     private final UserDao userDao;
@@ -21,32 +22,27 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    @Transactional
     public List<User> allUsers() {
         return userDao.allUsers();
     }
 
     @Override
-    @Transactional
     public void add(User user) {
         userDao.add(user);
     }
 
     @Override
-    @Transactional
-    public void delete(User user) {
-        userDao.delete(user);
+    public void delete(Long id) {
+        userDao.delete(id);
     }
 
     @Override
-    @Transactional
     public void edit(User user) {
         userDao.edit(user);
     }
 
     @Override
-    @Transactional
-    public User getUserById(int id) {
+    public User getUserById(Long id) {
         return userDao.getUserById(id);
     }
 }
